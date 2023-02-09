@@ -3,11 +3,11 @@ package db
 import (
 	"context"
 	"fmt"
-	"github.com/posipaka-trade/posipaka-trade-cmn/log"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"openAI/pkg/common"
+	"open-gpt-telegram/internal/log"
+	"open-gpt-telegram/pkg/common"
 	"time"
 )
 

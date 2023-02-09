@@ -1,10 +1,9 @@
-module openAI
+module open-gpt-telegram
 
 go 1.19
 
 require (
 	github.com/go-telegram-bot-api/telegram-bot-api/v5 v5.5.1
-	github.com/posipaka-trade/posipaka-trade-cmn v0.0.0-20221016191323-3ab3bbc79d32
 	go.mongodb.org/mongo-driver v1.11.1
 )
 
