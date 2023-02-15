@@ -2,13 +2,15 @@ package openAI
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"time"
 )
 
 const url = "https://api.openai.com/v1/completions"
-const token = 2000
+const token = 3500
 const temperature = 0.5
 const model = "text-davinci-003"
 
@@ -27,7 +29,10 @@ func SendRequestToOpenAI(apiKey, message string, client http.Client) (string, er
 	}
 	jsonReq, _ := json.Marshal(request)
 
-	req, err := http.NewRequest(http.MethodPost, url, bytes.NewBuffer(jsonReq))
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
+	defer cancel()
+
+	req, err := http.NewRequestWithContext(ctx, http.MethodPost, url, bytes.NewBuffer(jsonReq))
 	if err != nil {
 		return "", fmt.Errorf("creating OpenAi request failed. Error: %s", err)
 	}
